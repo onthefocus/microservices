@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\YahooFinanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/yahoofinance/history', [YahooFinanceController::class, 'get']);
+Route::get('/yahoofinance/history/{code?}', [YahooFinanceController::class, 'get']);
