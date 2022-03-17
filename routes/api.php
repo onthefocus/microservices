@@ -19,4 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/yahoofinance/history/{code?}', [YahooFinanceController::class, 'get']);
+Route::get('/yahoofinance/get/{code?}', [YahooFinanceController::class, 'get']);
+Route::post('/yahoofinance/post/{code?}', [YahooFinanceController::class, 'get']);
