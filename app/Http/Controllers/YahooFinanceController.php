@@ -12,7 +12,7 @@ class YahooFinanceController extends Controller
             'status' => true,
             'code' => $code,
             'trade_volume' => random_int(100000, 999999),
-            'current_price' => random_int(1000, 999),
+            'current_price' => random_int(100, 999),
         ];
         return $result;
     }
