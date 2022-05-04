@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/yahoofinance/get/{code?}', [YahooFinanceController::class, 'get']);
 Route::post('/yahoofinance/post', [YahooFinanceController::class, 'post']);
-Route::post('/claims/get', [ClaimsController::class, 'post']);
+Route::post('/claims/post', [ClaimsController::class, 'post']);
