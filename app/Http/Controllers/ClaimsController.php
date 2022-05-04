@@ -10,10 +10,10 @@ class ClaimsController extends Controller
         $claims = random_int(0, 2);
         $line = [
             'year'=> $year,
-            'excess' => $claims?null:random_int(1, 10)*100,
+            'excess' => $claims?random_int(1, 10)*100:null,
             'claims' => $claims,
-            'outstanding' => $claims?null:random_int(1, 10)*500,
-            'paid' => $claims?null:random_int(1, 10)*200
+            'outstanding' => $claims? random_int(1, 10)*500:null,
+            'paid' => $claims?random_int(1, 10)*200:null
         ];
 
         return $line;
