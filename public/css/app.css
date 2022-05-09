@@ -1,9 +1,20 @@
 h3 i.uil {
     color: rgb(255, 125, 0); 
+    margin-right: 5px;
 }
 h3 {
-    font-size:28px;
+    font-size:22px;
 }
 ul.insly {
-    padding-left: 60px;
+    padding-left: 30px;
+}
+body{ 
+    font-size: 13px;
+}
+.header h1 {
+    font-size:28px;
+}
+
+.header h2 {
+    font-size:22px;
 }
