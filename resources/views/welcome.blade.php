@@ -27,11 +27,11 @@
     <div class="container">
      
        
-        <div class="row mt-3 mb-5 pt-2 px-2 border">
+        <div class="row mt-3 mb-3 pt-2 px-2 border">
             <div class="col header">
                 <div class="text-left" style="width: 400px;">
                 <h1>Key Features</h1>
-                <h2>Quote & Bind</h2>
+                <h2><B>Quote & Bind</B></h2>
             </div>
             </div>
            
@@ -311,7 +311,7 @@
                 <ul class="list insly">
                     <li class="list-item">Out of the box multilanguages</li>
                     <li class="list-item">UI in 15 most common languages</li>
-                    <li class="list-item">Each user can select language</li>
+                    <li class="list-item">Each user can use specific language</li>
                     <li class="list-item">Custom quote form UI translation</li>
                 </ul>
             </div>
@@ -338,7 +338,7 @@
                 <ul class="list insly">
                     <li class="list-item">Separate help sidebar inside of platform</li>  
                     <li class="list-item">Static help matching system page</li>
-                    <li class="list-item">Related hepl articles</li>  
+                    <li class="list-item">Related help articles</li>  
                 </ul>
             </div>
           
