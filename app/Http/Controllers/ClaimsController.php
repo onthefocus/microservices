@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ClaimsController extends Controller
 {
@@ -26,9 +27,9 @@ class ClaimsController extends Controller
             'policy' => $policy,
             'lines' => 
              [
-               0 => $this->getLine($year-1),
-               1 => $this->getLine($year-2),
-               2 => $this->getLine($year-3),
+                (string) Str::uuid() => $this->getLine($year-1),
+                (string) Str::uuid() => $this->getLine($year-2),
+                (string) Str::uuid() => $this->getLine($year-3),
              ]
            
         ];

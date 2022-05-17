@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DbTablesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::get('/dbdocs/tables', [DbTablesController::class, 'getTables']);
+Route::get('/dbdocs/columns', [DbTablesController::class, 'getColumns']);
+Route::get('/dbdocs/comments', [DbTablesController::class, 'getComments']);
