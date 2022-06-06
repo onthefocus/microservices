@@ -18,7 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('/icons', function () {
+    return view('icons');
+});
 
 Route::get('/dbdocs/tables', [DbTablesController::class, 'getTables']);
 Route::get('/dbdocs/columns', [DbTablesController::class, 'getColumns']);
