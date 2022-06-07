@@ -55,7 +55,7 @@
                         <a href="#" class="btn btn-sm btn-primary mt-3 mb-2"> Start Quote </a>
                     </div>
                     <div class="col-5 justify-content-start" >
-                        <img src="/images/-_Commercial Aircraft Insurance .svg" width="150px" style="color:red" />
+                        <img src="/images/Commercial Aircraft.svg" width="150px" style="color:red" />
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                         <a href="#" class="btn btn-sm btn-primary mt-3 mb-2"> Start Quote </a>
                     </div>
                     <div class="col-5" >
-                        <img src="/images/-_Cyber Insurance.svg" width="150px" style="color:red" />
+                        <img src="/images/Cyber.svg" width="150px" style="color:red" />
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                         <a href="#" class="btn btn-sm btn-primary mt-3 mb-2"> Start Quote </a>
                     </div>
                     <div class="col-5" >
-                        <img src="/images/-_Commercial Property.svg" width="150px" style="color:red" />
+                        <img src="/images/Commercial Property.svg" width="150px" style="color:red" />
                     </div>
                 </div>
             </div>
@@ -119,6 +119,43 @@
                     </div>
                     <div class="col-4" >
                         <img src="/images/SVG/Asset 3.svg" width="110px" style="color:red" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row mt-1">
+            <div class="col m-3">
+                <div class="row border p-2">
+                    <div class="col-7">
+                        <h3 class="mt-2">Commercial Aircraft </h3>
+                        <div> Commercial aircraft hull and liability cover for small canadian aircrafts </div>
+                        <a href="#" class="btn btn-sm btn-primary mt-3 mb-2"> Start Quote </a>
+                    </div>
+                    <div class="col-5 justify-content-start" >
+                        <img src="/images/third/Commercial Aircraft Insurance.png" width="130px" style="color:red" />
+                    </div>
+                </div>
+            </div>
+            <div class="col m-3">
+                <div class="row border p-2 pr-4">
+                    <div class="col-7">
+                        <h3 class="mt-2">Cyber Insurance </h3>
+                        <div> Commercial aircraft hull and liability cover for small canadian aircrafts </div>
+                        <a href="#" class="btn btn-sm btn-primary mt-3 mb-2"> Start Quote </a>
+                    </div>
+                    <div class="col-5" >
+                        <img src="/images/third/Cyber Insurance.png" width="130px" style="color:red" />
+                    </div>
+                </div>
+            </div>
+            <div class="col m-3">
+                <div class="row  p-2 ">
+                    <div class="col-7">
+                       
+                    </div>
+                    <div class="col-5" >
+                        
                     </div>
                 </div>
             </div>
