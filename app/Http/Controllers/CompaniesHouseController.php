@@ -26,13 +26,13 @@ class CompaniesHouseController extends Controller
             $directors = Http::withBasicAuth($token, '')->get('https://api.company-information.service.gov.uk/company/'.$company_number.'/officers');
             if ($directors->successful()) {
                foreach ($directors['items'] as $value) {
-                $response['directors'][] = $value;
+                $response['directors'] = $value;
                 $response['directors_summary'][] = 
-                data_get($value, 'name') ." | ".
-                data_get($value, 'nationality')." | ".
-                data_get($value,'occupation')." | ".
-                data_get($value,'appointed_on'). ' - '.
-                data_get($value,'resigned_on') ;
+                str_pad(data_get($value, 'name'),35) ." | ".
+                str_pad(data_get($value, 'nationality'),15)." | ".
+                str_pad(data_get($value,'occupation'),20)." | ".
+                str_pad(data_get($value,'appointed_on'),12). ' - '.
+                str_pad(data_get($value,'resigned_on'),12).PHP_EOL ;
                }
             }
 
