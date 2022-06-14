@@ -30,9 +30,9 @@ class ClaimsController extends Controller
             'policy' => $policy,
             'lines' => 
              [
-                (string) Str::uuid() => $this->getLine($year-1),
-                (string) Str::uuid() => $this->getLine($year-2),
-                (string) Str::uuid() => $this->getLine($year-3),
+                'b41f3625-ebbd-4f28-b375-976deb94f65e' => $this->getLine($year-1),
+                'a47a8b41-b589-42a9-85bf-228d0cc35ce3' => $this->getLine($year-2),
+                '7df13a43-002b-4811-8b62-9da8703fb4d6' => $this->getLine($year-3),
              ]
            
         ];
