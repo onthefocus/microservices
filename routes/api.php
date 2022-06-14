@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\YahooFinanceController;
 use App\Http\Controllers\ClaimsController;
+use App\Http\Controllers\CompaniesHouseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/yahoofinance/get/{code?}', [YahooFinanceController::class, 'get']);
 Route::post('/yahoofinance/post', [YahooFinanceController::class, 'post']);
 Route::post('/claims/post', [ClaimsController::class, 'post']);
+Route::post('/companieshouse/post', [CompaniesHouseController::class, 'post']);
