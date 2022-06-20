@@ -55,7 +55,7 @@
                         <a href="#" class="btn btn-sm btn-primary mt-3 mb-2"> Start Quote </a>
                     </div>
                     <div class="col-5 justify-content-start" >
-                        <img src="/images/Commercial Aircraft.svg" width="150px" style="color:red" />
+                        <img src="/images/icons/Commercial Aircraft.svg" width="150px" style="color:red" />
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                         <a href="#" class="btn btn-sm btn-primary mt-3 mb-2"> Start Quote </a>
                     </div>
                     <div class="col-5" >
-                        <img src="/images/Cyber.svg" width="150px" style="color:red" />
+                        <img src="/images/icons/Cyber.svg" width="150px" style="color:red" />
                     </div>
                 </div>
             </div>
@@ -79,12 +79,54 @@
                         <a href="#" class="btn btn-sm btn-primary mt-3 mb-2"> Start Quote </a>
                     </div>
                     <div class="col-5" >
-                        <img src="/images/Commercial Property.svg" width="150px" style="color:red" />
+                        <img src="/images/icons/Commercial Property.svg" width="150px" style="color:red" />
                     </div>
                 </div>
             </div>
 
         </div>
+
+        <div class="row mt-1">
+            <div class="col m-3">
+                <div class="row border p-2">
+                    <div class="col-7">
+                        <h3 class="mt-2">Yacht </h3>
+                        <div> Commercial aircraft hull and liability cover for small canadian aircrafts </div>
+                        <a href="#" class="btn btn-sm btn-primary mt-3 mb-2"> Start Quote </a>
+                    </div>
+                    <div class="col-5 justify-content-start" >
+                        <img src="/images/icons/Yacht.webp" width="150px" style="color:red" />
+                    </div>
+                </div>
+            </div>
+            <div class="col m-3">
+                <div class="row border p-2 pr-4">
+                    <div class="col-7">
+                        <h3 class="mt-2">Jet Ski </h3>
+                        <div> Commercial aircraft hull and liability cover for small canadian aircrafts </div>
+                        <a href="#" class="btn btn-sm btn-primary mt-3 mb-2"> Start Quote </a>
+                    </div>
+                    <div class="col-5" >
+                        <img src="/images/icons/JetSki.webp" width="150px" style="color:red" />
+                    </div>
+                </div>
+            </div>
+            <div class="col m-3">
+                <div class="row border p-2 ">
+                    <div class="col-7">
+                        <h3 class="mt-2">General liability</h3>
+                        <div> Commercial aircraft hull and liability cover for small canadian aircrafts </div>
+                        <a href="#" class="btn btn-sm btn-primary mt-3 mb-2"> Start Quote </a>
+                    </div>
+                    <div class="col-5" >
+                        <img src="/images/icons/General Liability.webp" width="150px" style="color:red" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--
         <div class="row mt-1">
             <div class="col m-3">
                 <div class="row border p-2">
@@ -160,7 +202,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
         </div>
     </div>
 
