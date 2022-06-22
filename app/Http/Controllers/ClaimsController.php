@@ -9,11 +9,11 @@ class ClaimsController extends Controller
 {
     private function getLine($year) {
         $claims = random_int(0, 2);
-        $out = $claims? random_int(1, 10)*500:null;
-        $paid = $claims?random_int(1, 10)*200:null;
+        $out = $claims? random_int(1, 10)*5000:null;
+        $paid = $claims?random_int(1, 10)*2000:null;
         $line = [
             'year'=> $year,
-            'excess' => $claims?random_int(1, 10)*100:null,
+            'excess' => $claims?random_int(1, 10)*1000:null,
             'claims' => $claims,
             'outstanding' => $out,
             'paid' => $paid,

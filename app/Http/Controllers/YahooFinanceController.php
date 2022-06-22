@@ -8,8 +8,8 @@ class YahooFinanceController extends Controller
 {
     private function getResult(string $code='') {
 
-        $stockPrice = number_format(random_int(100, 999),0,'.',',');
-        $tradeVolume = number_format(random_int(100000, 999999),0,'.',',');
+        $stockPrice = number_format(random_int(240, 260),0,'.',',');
+        $tradeVolume = number_format(random_int(190, 200)/10,0,'.',',');
         $minPrice = number_format($stockPrice - random_int(1, 10),0,'.',',');
         $maxPrice = number_format($stockPrice + random_int(5, 15),0,'.',',');
         $year = 2022;
@@ -22,7 +22,7 @@ class YahooFinanceController extends Controller
             'min_price' => $minPrice,
             'max_price' => $maxPrice,
             'currency' => $curency,
-            'summary' => "Trading Volume ($year): $tradeVolume shares\nTrading Range ($year): $minPrice$curency - $maxPrice$curency\nCurrent Share Price: $stockPrice$curency"
+            'summary' => "Market Cap ($year): $tradeVolume B\nTrading Range ($year): $minPrice$curency - $maxPrice$curency\nCurrent Share Price: $stockPrice$curency"
         ];
         return $result;
     }
