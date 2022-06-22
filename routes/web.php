@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DbTablesController;
+use App\Http\Controllers\AssetsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,8 @@ Route::get('/', function () {
 Route::get('/icons', function () {
     return view('icons');
 });
+
+Route::get('/assets', [AssetsController::class, 'details']);
 
 Route::get('/dbdocs/tables', [DbTablesController::class, 'getTables']);
 Route::get('/dbdocs/columns', [DbTablesController::class, 'getColumns']);
