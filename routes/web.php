@@ -24,6 +24,7 @@ Route::get('/icons', function () {
 });
 
 Route::get('/assets', [AssetsController::class, 'details']);
+Route::get('/comments', [AssetsController::class, 'comments']);
 
 Route::get('/dbdocs/tables', [DbTablesController::class, 'getTables']);
 Route::get('/dbdocs/columns', [DbTablesController::class, 'getColumns']);

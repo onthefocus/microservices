@@ -22,7 +22,7 @@ class YahooFinanceController extends Controller
             'min_price' => $minPrice,
             'max_price' => $maxPrice,
             'currency' => $curency,
-            'summary' => "Market Cap ($year): $tradeVolume B\nTrading Range ($year): $minPrice$curency - $maxPrice$curency\nCurrent Share Price: $stockPrice$curency"
+            'summary' => "Market Cap ($year): $tradeVolume B\nTrading Range ($year): $minPrice$curency - $maxPrice$curency\nCurrent Stock Price: $stockPrice$curency"
         ];
         return $result;
     }
