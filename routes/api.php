@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\YahooFinanceController;
 use App\Http\Controllers\ClaimsController;
 use App\Http\Controllers\CompaniesHouseController;
+use App\Http\Controllers\TaxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,7 @@ Route::get('/yahoofinance/get/{code?}', [YahooFinanceController::class, 'get']);
 Route::post('/yahoofinance/post', [YahooFinanceController::class, 'post']);
 Route::post('/claims/post', [ClaimsController::class, 'post']);
 Route::post('/companieshouse/post', [CompaniesHouseController::class, 'post']);
+
+Route::post('/companieshouse/convert', [CompaniesHouseController::class, 'fnolLink']);
+
+Route::post('/tax/surplus', [TaxController::class, 'surplus']);

@@ -6,13 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 
-class CompaniesHouseController extends Controller
+class TaxController extends Controller
 {
-    public function fnolLink(Request $request) {
-        $response = json_encode($request->all(), JSON_NUMERIC_CHECK);
-        // do response convertion to the $url link
-
-        return $response;
+    public function surplus(Request $request)
+    {
+        return $request->all();
     }
     
     public function post(Request $request)
