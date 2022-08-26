@@ -15,10 +15,19 @@ class TaxController extends Controller
         $agency_fee = $request['agency_fee'] ?? 0;
         $underwriting_fee = $request['underwriting_fee'] ?? 0;
         $premium =  $request['premium'] ?? 0;
-        $surplus_tax = 100;
-        $stamping_fee = 50;
-        $total = $premium + $agency_fee + $underwriting_fee +  $surplus_tax + $stamping_fee;
+        $tax_basis = $premium + $agency_fee + $underwriting_fee;
         
+        $taxes = [
+            'Arizona'=>
+              [ 'tax' => 0.03, 'fee' => 0.02]
+        ];
+
+        $surplus_tax = $tax_basis * data_get($taxes[$state],'tax',0);
+        $stamping_fee = $tax_basis * data_get($taxes[$state],'fee',0);
+        
+        $total =  $tax_basis +  $surplus_tax + $stamping_fee;
+
+
         $response = [
             'agency_fee' => $agency_fee,
             'premium' => $premium,
@@ -26,6 +35,7 @@ class TaxController extends Controller
             'surplus_tax' => $surplus_tax,
             'stamping_fee' => $stamping_fee,
             'total' => $total,
+            'tax_basis' => $tax_basis,
             'type' => $type,
             'state' => $state,
 
