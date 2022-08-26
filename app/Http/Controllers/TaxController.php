@@ -18,13 +18,16 @@ class TaxController extends Controller
         $tax_basis = $premium + $agency_fee + $underwriting_fee;
         
         $taxes = [
-            'Arizona'=>
-              [ 'tax' => 0.03, 'fee' => 0.02]
+            
+            'Alabama'=> [ 'tax' => 0.06, 'fee' => 0],
+            'Alaska'=> [ 'tax' => 0.027, 'fee' => 0.01],
+            'Arizona'=> [ 'tax' => 0.03, 'fee' => 0.002],
+            'Arkansas'=> [ 'tax' => 0.04, 'fee' => 0]
         ];
 
         $surplus_tax = $tax_basis * data_get($taxes[$state],'tax',0);
         $stamping_fee = $tax_basis * data_get($taxes[$state],'fee',0);
-        
+
         $total =  $tax_basis +  $surplus_tax + $stamping_fee;
 
 
