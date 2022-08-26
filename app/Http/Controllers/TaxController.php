@@ -25,8 +25,11 @@ class TaxController extends Controller
             'Arkansas'=> [ 'tax' => 0.04, 'fee' => 0]
         ];
 
-        $surplus_tax = $tax_basis * data_get($taxes[$state],'tax',0);
-        $stamping_fee = $tax_basis * data_get($taxes[$state],'fee',0);
+        $surplus_tax_rate = data_get($taxes[$state],'tax',0);
+        $stamping_fee_rate = data_get($taxes[$state],'fee',0);
+       
+        $surplus_tax = $tax_basis * $surplus_tax_rate;
+        $stamping_fee = $tax_basis * $stamping_fee_rate;
 
         $total =  $tax_basis +  $surplus_tax + $stamping_fee;
 
@@ -35,6 +38,8 @@ class TaxController extends Controller
             'agency_fee' => $agency_fee,
             'premium' => $premium,
             'underwriting_fee'=> $underwriting_fee,
+            'surplus_tax_rate' => $surplus_tax_rate,
+            'stamping_fee_rate' => $stamping_fee_rate,
             'surplus_tax' => $surplus_tax,
             'stamping_fee' => $stamping_fee,
             'total' => $total,
