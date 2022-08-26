@@ -10,7 +10,27 @@ class TaxController extends Controller
 {
     public function surplus(Request $request)
     {
-        return $request->all();
+        $state = $request['state'];
+        $type = $request['type'];
+        $agency_fee = $request['agency_fee'] ?? 0;
+        $underwriting_fee = $request['underwriting_fee'] ?? 0;
+        $premium =  $request['premium'] ?? 0;
+        $surplus_tax = 100;
+        $stamping_fee = 50;
+        $total = $premium + $agency_fee + $underwriting_fee +  $surplus_tax + $stamping_fee;
+        
+        $response = [
+            'agency_fee' => $agency_fee,
+            'premium' => $premium,
+            'underwriting_fee'=> $underwriting_fee,
+            'surplus_tax' => $surplus_tax,
+            'stamping_fee' => $stamping_fee,
+            'total' => $total,
+            'type' => $type,
+            'state' => $state,
+
+        ];
+        return  $response;
     }
     
     public function post(Request $request)
