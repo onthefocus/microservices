@@ -11,12 +11,12 @@ class CalcController extends Controller
     public function builders(Request $request)
     {
         $limit = $request['limit'] ?? 0;
-        $rate = 0.004;
+        $rate = 0.0004;
         $min = 250;
         $premium = $limit * $rate;
 
         if ($premium < $min) {
-            
+
             $premium = $min;
         }
 
