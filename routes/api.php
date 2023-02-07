@@ -6,6 +6,7 @@ use App\Http\Controllers\YahooFinanceController;
 use App\Http\Controllers\ClaimsController;
 use App\Http\Controllers\CompaniesHouseController;
 use App\Http\Controllers\TaxController;
+use App\Http\Controllers\CalcController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,4 @@ Route::post('/companieshouse/post', [CompaniesHouseController::class, 'post']);
 Route::post('/companieshouse/convert', [CompaniesHouseController::class, 'fnolLink']);
 
 Route::post('/tax/surplus', [TaxController::class, 'surplus']);
+Route::post('/rates/builders', [CalcController::class, 'builders']);
