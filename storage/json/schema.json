@@ -1,0 +1,125 @@
+{
+    "label": "Commercial D&O",
+    "type": "quote",
+    "version": 2,
+    "properties": {
+       "client": {
+         "label": "Client Details",
+         "type": "section",
+         "alias": "customer",
+         "description": "Nice client details",
+         "parameters": {
+           "collapsable": "collapsed",
+           "expandable": "true"
+         },
+         "properties": {
+            "name": {
+               "label": "Client Name",
+               "type": "client",
+               "default": "Super Jonny",
+               "alias": "name",
+               "parameters": {
+                 "readonly": true
+               } 
+            },
+            "code": {
+               "label": "Client Code",
+               "alias": "code",
+               "type": "number",
+               "default": "20984028340923"
+            },
+            "city": {
+                "label": "Address City",
+                "alias": "address.city",
+                "type": "number",
+                "default": "Vilnius"
+             },
+             "street": {
+                "label": "Address Street",
+                "alias": "address.street",
+                "type": "number",
+                "default": "Vaidilutes 79"
+             },
+            "dob": {
+               "label": "Client DOB",
+               "alias": "dob",
+               "type": "date",
+               "default": "2000-08-01"
+            }
+         }
+       },
+       "building": {
+         "label": "Properties List",
+         "type": "object",
+         "alias": "insured.object",
+         "parameters": {
+             "min": 1,
+             "max": null
+          },
+         "properties": {
+            "address": {
+               "label": "Property Address",
+               "type": "text",
+               "default": "Park Avenue 182, Cleavlend, OH, USA",
+               "alias": "data.name"
+            },
+            "riskBuildings": {
+               "label": "Building Risk",
+               "type": "risk",
+               "alias": "products.property",
+               "properties": {
+                "deductible": {
+                   "label": "Building Deductible",
+                   "type": "number",
+                   "default": "1000 EUR",
+                   "alias": "deductible",
+                   "parameters": {
+                     "readonly": true
+                   } 
+                },
+                "limit": {
+                   "label": "Limit",
+                   "alias": "limit",
+                   "type": "number",
+                   "default": "2'000'000'"
+                },
+                "premium": {
+                   "label": "Premium",
+                   "alias": "premiumn",
+                   "type": "money",
+                   "default": "2000 EUR"
+                }
+             }
+            },
+            "riskContents": {
+                "label": "Building Contents",
+                "type": "risk",
+                "alias": "products.content",
+                "properties": {
+                 "deductible": {
+                    "label": "Building Deductible",
+                    "type": "number",
+                    "default": "200 EUR",
+                    "alias": "deductible",
+                    "parameters": {
+                      "readonly": true
+                    } 
+                 },
+                 "limit": {
+                    "label": "Limit",
+                    "alias": "limit",
+                    "type": "number",
+                    "default": "100'000'"
+                 },
+                 "premium": {
+                    "label": "Premium",
+                    "alias": "premiumn",
+                    "type": "money",
+                    "default": "600 EUR"
+                 }
+              }
+             }
+         }
+       }
+     }
+   }

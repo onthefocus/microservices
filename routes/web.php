@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DbTablesController;
 use App\Http\Controllers\AssetsController;
+use App\Http\Controllers\SchemaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,11 @@ Route::get('/icons', function () {
 
 Route::get('/assets', [AssetsController::class, 'details']);
 Route::get('/comments', [AssetsController::class, 'comments']);
+
+Route::get('/schema', [SchemaController::class, 'schema']);
+Route::get('/schema/structure', [SchemaController::class, 'structure']);
+Route::get('/schema/data', [SchemaController::class, 'data']);
+Route::get('/schema/ledger', [SchemaController::class, 'ledger']);
 
 Route::get('/dbdocs/tables', [DbTablesController::class, 'getTables']);
 Route::get('/dbdocs/columns', [DbTablesController::class, 'getColumns']);

@@ -10,8 +10,8 @@ class TaxController extends Controller
 {
     public function surplus(Request $request)
     {
-        $state = $request['state'];
-        $type = $request['type'];
+        $state = $request['state'] ?? 'Florida';
+        $type = $request['type'] ?? 'new';
         $agency_fee = $request['agency_fee'] ?? 0;
         $underwriting_fee = $request['underwriting_fee'] ?? 0;
         $premium =  $request['premium'] ?? 0;
