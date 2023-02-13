@@ -10,21 +10,24 @@ class CalcController extends Controller
 {
     public function builders(Request $request)
     {
-        $limit = $request['limit'] ?? 0;
-        $rate = 0.0004;
-        $min = 250;
-        $premium = $limit * $rate;
+        $limit = $request['limit'] ?? 100000;
 
-        if ($premium < $min) {
+        $construction_rate = 0.0004;
+        $liability_rate = 0.00025;
 
-            $premium = $min;
-        }
+        $construction_premium = $limit * $construction_rate;
+        $liability_premium = $limit * $liability_rate;
+        $soft_deductible = 1000;
+        $hard_deductible = 800;
 
         $response = [
             'limit' => $limit,
-            'rate' => $rate,
-            'premium' => $premium,
-            'min' => $min, 
+            'construction_rate' => $construction_rate,
+            'liability_rate' => $liability_rate,
+            'soft_deductible' => $soft_deductible,
+            'hard_deductible' => $hard_deductible,
+            'construction_premium' => $construction_premium,
+            'liability_premium' => $liability_premium, 
 
         ];
         return  $response;
