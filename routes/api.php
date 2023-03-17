@@ -7,6 +7,7 @@ use App\Http\Controllers\ClaimsController;
 use App\Http\Controllers\CompaniesHouseController;
 use App\Http\Controllers\TaxController;
 use App\Http\Controllers\CalcController;
+use App\Http\Controllers\AIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::get('/yahoofinance/get/{code?}', [YahooFinanceController::class, 'get']);
 Route::post('/yahoofinance/post', [YahooFinanceController::class, 'post']);
 Route::post('/claims/post', [ClaimsController::class, 'post']);
 Route::post('/companieshouse/post', [CompaniesHouseController::class, 'post']);
+Route::post('/ai/initiate', [AIController::class, 'initiate']);
 
 Route::post('/companieshouse/convert', [CompaniesHouseController::class, 'fnolLink']);
 
