@@ -66,30 +66,47 @@ class AIController extends Controller
     }
     public function initiate(Request $request)
     {
+ 
         $url = 'https://api.docparser.com/v1/'; 
 
-        $parser_id = $request['parser_id'];
-        $document_id = $request['document_id'];
-        $quote_id = $request['quote_id'];
-
-        $document = $this->getDocument($quote_id, $document_id);
-
         $token = $request->bearerToken();
-       
-
-        // Upload document to the DocParser
         $headers = ['api_key' => $token];
 
-        $response = Http::withHeaders($headers)
-        ->attach('file', $document, 'offer-'.$document_id.'.pdf')
-        ->post($url.'document/upload/'.$parser_id);
-       
-        if ($response->successful()) {
-            $id = $response['id'];
+        $parser_id = $request['parser_id'];
+        if (empty($parser_id)) return response()->json(['error' => 'Required parameter value is not provided: (parser_id)'], 404);
+
+        $document_id = $request['document_id'];
+        if (empty($document_id)) return response()->json(['error' => 'Required parameter value is not provided: (document_id)'], 404);
+
+        $quote_id = $request['quote_id'];
+         if (empty($quote_id)) return response()->json(['error' => 'Required parameter value is not provided: (quote_id)'], 404);
+
+        $media_id = $request['media_id'];
+
+        if (empty($media_id)) {
+
+            // Get Q&B document content
+            $document = $this->getDocument($quote_id, $document_id);
+            
+        
+            // Upload document to the DocParser
+            $response = Http::withHeaders($headers)
+            ->attach('file', $document, 'offer-'.$document_id.'.pdf')
+            ->post($url.'document/upload/'.$parser_id);
+
+            $status = $response->successful();
+            
+            if ($status) $media_id = $response['id'];
+        } else {
+            $status = true;
+        }
+
+        if ($status) {
+          
             $results = [];
             for ($i=0; $i < 10; $i++) { 
                 $results = Http::withHeaders($headers)
-                ->post($url.'results/'.$parser_id.'/'.$id);
+                ->post($url.'results/'.$parser_id.'/'.$media_id);
                 if (empty($results['error'])) {
                     return $results[0];
                 } 
