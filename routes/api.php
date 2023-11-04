@@ -8,6 +8,7 @@ use App\Http\Controllers\CompaniesHouseController;
 use App\Http\Controllers\TaxController;
 use App\Http\Controllers\CalcController;
 use App\Http\Controllers\AIController;
+use App\Http\Controllers\GeoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,6 @@ Route::post('/companieshouse/convert', [CompaniesHouseController::class, 'fnolLi
 
 Route::post('/tax/surplus', [TaxController::class, 'surplus']);
 Route::post('/rates/builders', [CalcController::class, 'builders']);
+
+Route::post('/geo/search', [GeoController::class, 'search']);
+Route::post('/geo/distance', [GeoController::class, 'distance']);
