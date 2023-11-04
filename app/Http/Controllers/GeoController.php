@@ -45,13 +45,13 @@ class GeoController extends Controller
 
     public function search(Request $request)
     {
-        $properties = data_get($request, 'properties', []);
+        $properties = data_get($request, 'property', []);
         $response = [];
         foreach ($properties as $key => $value) {
             $response[$key] = $this->getGeoLocation($value);
          }
 
-        return response()->json( $response, 200);
+        return response()->json( ['property' => $response], 200);
     }
 
     public function distance(Request $request)
