@@ -38,3 +38,4 @@ Route::post('/rates/builders', [CalcController::class, 'builders']);
 
 Route::post('/geo/search', [GeoController::class, 'search']);
 Route::post('/geo/distance', [GeoController::class, 'distance']);
+Route::post('/geo/adjacent', [GeoController::class, 'adjacent']);

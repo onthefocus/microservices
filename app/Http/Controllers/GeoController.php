@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
+use App\Http\QnBService;
 
 class GeoController extends Controller
 {
 
-    public function getGeoLocation($request)
+    private function getGeoLocation($request)
     {
 
         $isStructured = data_get($request, 'is_structured', false);
@@ -41,6 +42,70 @@ class GeoController extends Controller
             'url' => $url,
             'response' => data_get($result->json(), 0)
         ];
+    }
+
+    public function adjacent(Request $request)
+    {
+        $properties = data_get($request, 'properties', []);
+        $response = [];
+        $adjacent = [];
+        $min = 0.1;
+
+        $service = new QnBService();
+
+        $view = $service->getView('properties');
+      
+
+        foreach ($properties as $key => $value) {
+         
+            $adjacent = $this->closest($min,
+               data_get($value, 'lat', 0),
+               data_get($value, 'lon', 0), 
+               $view, $key);
+            
+               foreach ($adjacent as $key => $value) {
+                if (isset($response[$key])) {
+                    if (data_get($response[$key],'distance') > data_get($value, 'distance') ) {
+                        $response[$key] = $value;
+                    }
+                } else  {
+                    $response[$key] = $value;
+                }
+               }
+         }
+
+        $result = [
+            'adjacents' => $response,
+        ]; 
+        
+        return response()->json( $result, 200);
+    }
+    private function closest($min, $lat, $lon, $array, $pid) {
+
+        $measure = 'km';
+        $close = [];
+
+        foreach ($array as $key => $value) {
+            $plat = data_get($value, 'lat', 0);
+            $plon = data_get($value, 'lon', 0);
+            $id = data_get($value, 'id', 0);
+
+            if ($plat != 0 && $plon !=0  && $id != $pid) {
+                $distance = $this->getDistanceBetweenPoints( $lat, $lon, $plat, $plon, $measure );
+
+                $isClose =  $distance <= $min;
+                $value['distance'] = $distance;
+                $value['close'] = $isClose;
+                $value['min'] = $min;
+                $value['property_id'] = $pid;
+
+                $close[$id] = $value;
+              
+            }
+              
+         }
+
+         return $close;
     }
 
     public function search(Request $request)
@@ -80,8 +145,7 @@ class GeoController extends Controller
 
     private function getDistanceBetweenPoints($latitude1, $longitude1, $latitude2, $longitude2, $unit = 'km')
     {
-  
-        $theta = $longitude1 - $longitude2;
+         $theta = $longitude1 - $longitude2;
         $distance = (sin(deg2rad($latitude1)) * sin(deg2rad($latitude2))) + (cos(deg2rad($latitude1)) * cos(deg2rad($latitude2)) * cos(deg2rad($theta)));
         $distance = acos($distance);
         $distance = rad2deg($distance);
