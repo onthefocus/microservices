@@ -46,23 +46,34 @@ class GeoController extends Controller
 
     public function adjacent(Request $request)
     {
+        // Pulling all provided properties array
         $properties = data_get($request, 'properties', []);
-        $response = [];
-        $adjacent = [];
-        $min = 0.1;
-
-        $service = new QnBService();
-
-        $view = $service->getView('properties');
       
+        $minDistance = data_get($request, 'config.distance', 0.1);
+        $viewName = data_get($request, 'config.sql_view', 'properties');
+
+        // We need to collect all properties keys, cause later we will need exclude self properties from checking
+        $propertiesKeys = array_keys($properties);
+
+        // make a call to QnB database specified view to get properties from all policies
+        $service = new QnBService();
+        $viewProperties = $service->getView($viewName);  //GET $url.'db-views/'.$viewName;
+
+   
+        // exlude from policies properties, which keys match the provided properties
+         $viewProperties =  array_filter($viewProperties, function($v, $k) use ($propertiesKeys) {
+            return !in_array($v['id'], $propertiesKeys);
+        }, ARRAY_FILTER_USE_BOTH);
 
         foreach ($properties as $key => $value) {
          
-            $adjacent = $this->closest($min,
+            // Get array of adjacent (by provided distance) policies properties for each provided property
+            $adjacent = $this->closest($minDistance,
                data_get($value, 'lat', 0),
                data_get($value, 'lon', 0), 
-               $view, $key);
+               $viewProperties, $key);
             
+             // Add only missing policies properties to response
                foreach ($adjacent as $key => $value) {
                 if (isset($response[$key])) {
                     if (data_get($response[$key],'distance') > data_get($value, 'distance') ) {
@@ -75,10 +86,10 @@ class GeoController extends Controller
          }
 
         $result = [
-            'adjacents' => $response,
+            'result' => $response,
         ]; 
         
-        return response()->json( $result, 200);
+        return response()->json($result, 200);
     }
     private function closest($min, $lat, $lon, $array, $pid) {
 
