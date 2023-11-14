@@ -29,6 +29,14 @@ class ChatGPTController extends Controller
 
     }
 
+    private function json_validator($data) { 
+        if (!empty($data)) { 
+            return is_string($data) &&  
+              is_array(json_decode($data, true)) ? true : false; 
+        } 
+        return false; 
+    } 
+
     public function chat(Request $request) {
 
         $promptContext = data_get($request,'prompt.content', null);
@@ -43,7 +51,7 @@ class ChatGPTController extends Controller
         $fullPrompt = $promptPrefix. ' '. $promptContext .' '.$promptSufix. ' ';
 
         $temperature = data_get($request,'parameters.temperature',0.7);
-        $maxTokens = data_get($request,'parameters.max_tokens',150);
+        $maxTokens = data_get($request,'parameters.max_tokens',1000);
         $testMode = data_get($request,'parameters.test_mode',false);
 
         $documentID = data_get($request,'parameters.document_id',null);
@@ -105,12 +113,16 @@ class ChatGPTController extends Controller
             $response = Http::withToken($token)->post("https://api.openai.com/v1/chat/completions", $payload);
             
             if ($response->failed()) {
-            return response()->json(['status'=>400, 'error'=>'Error of Open AI API'], 401);  ;
+                return response()->json(['error'=>'Error of Open AI API'], 401);  
             }
             $content = $response->json();
 
             $data = data_get($content,'choices.0.message.content');
         } 
+        
+        if (!$this->json_validator($data)) {
+            return response()->json(['error'=>'Given Json output is not valid. Assuming return tokens limit is reached!'], 401);  
+        }
 
         return  response()->json([
             'input' => [ 'payload' =>$payload, 'test_mode' => $testMode, 'response' =>  $content  ], 
