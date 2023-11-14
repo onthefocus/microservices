@@ -8,6 +8,7 @@ use App\Http\Controllers\CompaniesHouseController;
 use App\Http\Controllers\TaxController;
 use App\Http\Controllers\CalcController;
 use App\Http\Controllers\AIController;
+use App\Http\Controllers\ChatGPTController;
 use App\Http\Controllers\GeoController;
 
 /*
@@ -30,6 +31,7 @@ Route::post('/yahoofinance/post', [YahooFinanceController::class, 'post']);
 Route::post('/claims/post', [ClaimsController::class, 'post']);
 Route::post('/companieshouse/post', [CompaniesHouseController::class, 'post']);
 Route::post('/ai/initiate', [AIController::class, 'initiate']);
+Route::post('/ai/chat', [ChatGPTController::class, 'chat']);
 
 Route::post('/companieshouse/convert', [CompaniesHouseController::class, 'fnolLink']);
 
