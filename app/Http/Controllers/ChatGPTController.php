@@ -51,7 +51,7 @@ class ChatGPTController extends Controller
         $fullPrompt = $promptPrefix. ' '. $promptContext .' '.$promptSufix. ' ';
 
         $temperature = data_get($request,'parameters.temperature',0.7);
-        $maxTokens = data_get($request,'parameters.max_tokens',9999);
+        $maxTokens = data_get($request,'parameters.max_tokens',2000);
         $testMode = data_get($request,'parameters.test_mode',false);
 
         $documentID = data_get($request,'parameters.document_id',null);
@@ -113,7 +113,7 @@ class ChatGPTController extends Controller
             $response = Http::withToken($token)->post("https://api.openai.com/v1/chat/completions", $payload);
             
             if ($response->failed()) {
-                return response()->json(['error'=>'Error of Open AI API'], 401);  
+                return response()->json(['error'=>'Error of Open AI API', 'message' => $response->json()], 401);  
             }
             $content = $response->json();
 
