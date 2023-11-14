@@ -113,7 +113,7 @@ class ChatGPTController extends Controller
         } 
 
         return  response()->json([
-            'input' => [ 'payload' =>$payload, 'test_mode' => $testMode  ], 
+            'input' => [ 'payload' =>$payload, 'test_mode' => $testMode, 'response' =>  $content  ], 
             'output'=> json_decode($data) 
             ]
             , 200); 
