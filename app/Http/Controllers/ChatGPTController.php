@@ -72,10 +72,13 @@ class ChatGPTController extends Controller
         }
    
         $document = $this->getDocument($quoteID, $documentID, $instanceURL);
-        return $document;
+       
 
         $parser = new \Smalot\PdfParser\Parser();
-        $pdf = $parser->parseFile(public_path('pdf').'/Policy.pdf');
+
+        $pdf = $parser->parseContent($document);
+
+       //  $pdf = $parser->parseFile(public_path('pdf').'/Policy.pdf');
 
         $fileText = $pdf->getText();
      
