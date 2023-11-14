@@ -44,9 +44,10 @@ class ChatGPTController extends Controller
 
         $temperature = data_get($request,'parameters.temperature',0.7);
         $maxTokens = data_get($request,'parameters.max_tokens',150);
+        $testMode = data_get($request,'parameters.test_mode',false);
 
         $documentID = data_get($request,'parameters.document_id',null);
-        $testMode = data_get($request,'parameters.test_mode',false);
+      
 
         if (empty($documentID)) {
             return response()->json(['error'=>'Document ID value is empty', 'message'=> 'Please provide document id (parameters.document_id) value in request payload.'], 401);  ;
@@ -70,6 +71,8 @@ class ChatGPTController extends Controller
             return response()->json(['error'=>'Open AI token is misssing', 'message'=> 'Please set valid Open AI API token in ENV file.'], 401);  ;
         }
    
+        $document = $this->getDocument($quoteID, $documentID, $instanceURL);
+        return $document;
 
         $parser = new \Smalot\PdfParser\Parser();
         $pdf = $parser->parseFile(public_path('pdf').'/Policy.pdf');
@@ -107,7 +110,7 @@ class ChatGPTController extends Controller
         } 
 
         return  response()->json([
-            'input' => [ 'prompt' => $fullPrompt, 'text' => $fileText, 'test_mode' => $testMode ], 
+            'input' => [ 'payload' =>$payload, 'test_mode' => $testMode  ], 
             'output'=> json_decode($data) 
             ]
             , 200); 
