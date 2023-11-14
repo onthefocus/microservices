@@ -51,7 +51,7 @@ class ChatGPTController extends Controller
         $fullPrompt = $promptPrefix. ' '. $promptContext .' '.$promptSufix. ' ';
 
         $temperature = data_get($request,'parameters.temperature',0.7);
-        $maxTokens = data_get($request,'parameters.max_tokens',1000);
+        $maxTokens = data_get($request,'parameters.max_tokens',9999);
         $testMode = data_get($request,'parameters.test_mode',false);
 
         $documentID = data_get($request,'parameters.document_id',null);
