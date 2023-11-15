@@ -75,7 +75,7 @@ class ChatGPTController extends Controller
 
         $token = env('CHAT_GPT_TOKEN', null);
 
-        if (empty($instanceURL)) {
+        if (empty($token)) {
             return response()->json(['error'=>'Open AI token is misssing', 'message'=> 'Please set valid Open AI API token in ENV file.'], 401);  ;
         }
    
