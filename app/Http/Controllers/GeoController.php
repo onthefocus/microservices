@@ -85,6 +85,11 @@ class GeoController extends Controller
                }
          }
 
+         // exlude non close properties
+         $response =  array_filter($response, function($v, $k)  {
+            return $v['close'] === true;
+        }, ARRAY_FILTER_USE_BOTH);
+
         $result = [
             'result' => $response,
         ]; 
@@ -105,15 +110,15 @@ class GeoController extends Controller
                 $distance = $this->getDistanceBetweenPoints( $lat, $lon, $plat, $plon, $measure );
 
                 $isClose =  $distance <= $min;
-                
-                if ($isClose) {
+
+              
                     $value['distance'] = $distance;
                     $value['close'] = $isClose;
                     $value['min'] = $min;
                     $value['property_id'] = $pid;
 
-                    $close[$id] = $value;
-                }
+            $close[$id] = $value; 
+                
               
             }
               
