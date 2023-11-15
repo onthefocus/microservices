@@ -93,7 +93,7 @@ class GeoController extends Controller
     }
     private function closest($min, $lat, $lon, $array, $pid) {
 
-        $measure = 'km';
+        $measure = 'mil';
         $close = [];
 
         foreach ($array as $key => $value) {
@@ -105,12 +105,15 @@ class GeoController extends Controller
                 $distance = $this->getDistanceBetweenPoints( $lat, $lon, $plat, $plon, $measure );
 
                 $isClose =  $distance <= $min;
-                $value['distance'] = $distance;
-                $value['close'] = $isClose;
-                $value['min'] = $min;
-                $value['property_id'] = $pid;
+                
+                if ($isClose) {
+                    $value['distance'] = $distance;
+                    $value['close'] = $isClose;
+                    $value['min'] = $min;
+                    $value['property_id'] = $pid;
 
-                $close[$id] = $value;
+                    $close[$id] = $value;
+                }
               
             }
               
