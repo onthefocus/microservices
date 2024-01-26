@@ -198,7 +198,7 @@ class YachtController extends Controller
                     "Security Officer",
                     "Massage Therapist/Spa Staff"
                 ],4)),
-                'annualWage' => fake()->numberBetween(3000, 6000)* 12 *3,
+                'annualWage' => fake()->numberBetween(3000, 6000)* 12 *4,
                 'number' => fake()->numberBetween(2, 10),
                 'captain' => fake()->name(),
              ]
