@@ -30,7 +30,15 @@ class YachtController extends Controller
                 "Nautica 11 VT"
             ],
         ];
-        $tenderMake = fake()->randomElement($tenderMakesAndModels);
+
+        $tenderMakes = [
+            "Williams" ,
+            "Novurania" ,
+            "Zodiac" ,
+            "AB Inflatables",
+        ];
+
+        $tenderMake = fake()->randomElement($tenderMakes);
  
         $result = [
             'status' => true,
@@ -167,7 +175,7 @@ class YachtController extends Controller
              'tenders' => [
                 '76988ac8-c8db-43ef-8c03-dd0675b0c0e3'=> [
                     'make' =>  $tenderMake ,
-                 //   'model' => fake()->randomElement($tenderMakesAndModels[$tenderMake]),
+                    'model' => fake()->randomElement($tenderMakesAndModels[$tenderMake]),
                     'serial' => fake()->numberBetween(20000000, 90000000),
                     'value' => fake()->numberBetween(10, 99)* 1000,
                 ]
