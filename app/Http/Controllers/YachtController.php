@@ -180,6 +180,28 @@ class YachtController extends Controller
                     'value' => fake()->numberBetween(10, 99)* 1000,
                 ]
              ],
+             'crew' => [
+                'positions' =>  implode(", ", fake()->randomElements([
+                    "Captain",
+                    "First Officer",
+                    "Deckhand",
+                    "Bosun",
+                    "Engineer",
+                    "Chef",
+                    "Steward/Stewardess",
+                    "Purser",
+                    "Interior Crew",
+                    "Deck Officers",
+                    "Tender Operator",
+                    "Dive Instructor",
+                    "Nanny",
+                    "Security Officer",
+                    "Massage Therapist/Spa Staff"
+                ],4)),
+                'annualWage' => fake()->numberBetween(3000, 6000)* 12 *3,
+                'number' => fake()->numberBetween(2, 10),
+                'captain' => fake()->name(),
+             ]
            
         ];
         return $result;
