@@ -10,6 +10,7 @@ use App\Http\Controllers\CalcController;
 use App\Http\Controllers\AIController;
 use App\Http\Controllers\ChatGPTController;
 use App\Http\Controllers\GeoController;
+use App\Http\Controllers\YachtController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/yahoofinance/get/{code?}', [YahooFinanceController::class, 'get']);
 Route::post('/yahoofinance/post', [YahooFinanceController::class, 'post']);
+
+Route::get('/yacht/get/{name?}', [YachtController::class, 'get']);
+Route::post('/yacht/post', [YachtController::class, 'post']);
+
 Route::post('/claims/post', [ClaimsController::class, 'post']);
 Route::post('/companieshouse/post', [CompaniesHouseController::class, 'post']);
 Route::post('/ai/initiate', [AIController::class, 'initiate']);
