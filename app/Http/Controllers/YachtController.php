@@ -8,6 +8,29 @@ class YachtController extends Controller
 {
     private function getResult(string $name='') {
 
+        $tenderMakesAndModels = [
+            "Williams" => [
+                "Turbojet 325",
+                "Sportjet 435",
+                "Dieseljet 505"
+            ],
+            "Novurania" => [
+                "DL 400",
+                "MX 450",
+                "Chase 19"
+            ],
+            "Zodiac" => [
+                "Medline 660",
+                "Pro Open 550",
+                "Yachtline 340"
+            ],
+            "AB Inflatables" => [
+                "Nautilus 15 DLX",
+                "Alumina 13 ALX",
+                "Nautica 11 VT"
+            ],
+        ];
+        $tenderMake = fake()->randomElement($tenderMakesAndModels);
  
         $result = [
             'status' => true,
@@ -133,17 +156,21 @@ class YachtController extends Controller
                     "CUMMINS456789",
                     "YANMAR123456",
                 ]),
-                'survey' =>  fake()->dateTimeBetween('-3 years', '-1 years'),
+                'survey' =>  fake()->dateTimeBetween('-3 years', '-1 years')->format('Y-m-d'),
                 'year' =>  fake()->numberBetween(1990, 2024),
                 'fuel' => fake()->randomElement([
                     "Petrol",
                     "Diesel" 
                 ]),
-                'refit' =>  fake()->numberBetween(100, 5000),
+                'refit' =>  fake()->dateTimeBetween('-8 years', '-4 years')->format('Y-m-d'),
              ],
              'tenders' => [
-                'name' => $name,
-                'value' => fake()->randomNumber(8)
+                '76988ac8-c8db-43ef-8c03-dd0675b0c0e3'=> [
+                    'make' =>  $tenderMake ,
+                    'model' => fake()->randomElement($tenderMakesAndModels[$tenderMake]),
+                    'serial' => fake()->numberBetween(20000000, 90000000),
+                    'value' => fake()->numberBetween(10, 99)* 1000,
+                ]
              ],
            
         ];
