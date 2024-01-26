@@ -178,6 +178,12 @@ class YachtController extends Controller
                     'model' => fake()->randomElement($tenderMakesAndModels[$tenderMake]),
                     'serial' => fake()->numberBetween(20000000, 90000000),
                     'value' => fake()->numberBetween(10, 99)* 1000,
+                ],
+                '8d6d60e5-2634-403b-957c-1f866156280f'=> [
+                    'make' =>  $tenderMake ,
+                    'model' => fake()->randomElement($tenderMakesAndModels[$tenderMake]),
+                    'serial' => fake()->numberBetween(20000000, 90000000),
+                    'value' => fake()->numberBetween(10, 99)* 1000,
                 ]
              ],
              'crew' => [
