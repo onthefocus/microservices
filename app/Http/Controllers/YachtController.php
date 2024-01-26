@@ -14,7 +14,26 @@ class YachtController extends Controller
 
             'yacht' => [
                 'name' => $name,
-                'value' => fake()->randomNumber(8)
+                'mooring' => fake()->city(),
+                'builder' => fake()->randomElements([
+                    "Lürssen",
+                    "Feadship",
+                    "Benetti",
+                    "Oceanco",
+                    "Amels",
+                    "Abeking & Rasmussen",
+                    "Heesen Yachts",
+                    "CRN",
+                    "Sunseeker",
+                    "Sanlorenzo",
+                ]),
+                'year' => fake()->numberBetween(1999, 2023),
+                'value' => fake()->numberBetween(10, 99)* 100000,
+                'dimensions' => [
+                    'length' => fake()->randomFloat(1, 20, 40),
+                    'beam' => fake()->randomFloat(1, 4, 9),
+                    'draft' => fake()->randomFloat(1, 1, 3),
+                ],
              ],
              'tenders' => [
                 'name' => $name,
