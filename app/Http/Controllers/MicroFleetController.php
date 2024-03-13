@@ -22,7 +22,7 @@ class MicroFleetController extends Controller
 
 
         foreach ($ergo as $key => $value) {
-            $ac =  data_get($value,'value',0)*0.22;
+            $ac =  round(data_get($value,'value',0)*0.22,2);
             data_set($response, 'prices.ergo.multi.'.$key.'.ac', $ac);
             $oc = 300;
             data_set($response, 'prices.ergo.multi.'.$key.'.oc', $oc);
@@ -30,7 +30,7 @@ class MicroFleetController extends Controller
         }
 
         foreach ($interrisk as $key => $value) {
-            $ac =  data_get($value,'value',0) * 0.28;
+            $ac =  round(data_get($value,'value',0) * 0.28,2);
             data_set($response, 'prices.interrisk.multi.'.$key.'.ac', $ac);
             $oc = 300;
             data_set($response, 'prices.interrisk.multi.'.$key.'.oc', $oc);
