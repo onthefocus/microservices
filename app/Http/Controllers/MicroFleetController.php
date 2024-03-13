@@ -11,29 +11,33 @@ class MicroFleetController extends Controller
     public function fleet(Request $request)
     {
         $data = $request->all();
-        $ergo = data_get($data, 'prices.ergo',[]);
-        $interrisk = data_get($data, 'prices.interrisk',[]);
-        $ergo['total'] = 0;
-        foreach (data_get($ergo,'multi',[]) as $key => $value) {
-            $ergo[$key]['ac'] = data_get($value,'value',0)*0.22;
-            $ergo[$key]['oc'] = 300;
-            $ergo['total'] += $ergo[$key]['ac'] + $ergo[$key]['oc'];
-        }
-        $interrisk['total'] = 0;
-        foreach (data_get($interrisk, 'multi',[]) as $key => $value) {
-            $interrisk[$key]['ac'] = data_get($value,'value',0)*0.32;
-            $interrisk[$key]['oc'] = 300;
-            $interrisk['total'] += $interrisk[$key]['ac'] + $interrisk[$key]['oc'];
-        }
+        $ergo = data_get($data, 'prices.ergo.multi',[]);
+        $interrisk = data_get($data, 'prices.interrisk.multi',[]);
 
-   
-
-        $response = [
-            'prices'=> [
-                'ergo' => $ergo,
-                'interrisk' =>  $interrisk
+        $response =  ['prices'=> [
+            'ergo' => ['multi' => [] , 'totalPremium' => 0],
+            'interrisk' =>  ['multi' => [] , 'totalPremium' => 0],
             ]
         ];
+
+
+        foreach ($ergo as $key => $value) {
+            $ac =  data_get($value,'value',0)*0.22;
+            data_set($response, 'prices.ergo.multi.'.$key.'.ac', $ac);
+            $oc = 300;
+            data_set($response, 'prices.ergo.multi.'.$key.'.oc', $oc);
+            data_set($response, 'prices.ergo.totalPremium', data_get($response, 'prices.ergo.totalPremium',0) + $ac + $oc);
+        }
+
+        foreach ($interrisk as $key => $value) {
+            $ac =  data_get($value,'value',0) * 0.28;
+            data_set($response, 'prices.interrisk.multi.'.$key.'.ac', $ac);
+            $oc = 300;
+            data_set($response, 'prices.interrisk.multi.'.$key.'.oc', $oc);
+            data_set($response, 'prices.interrisk.totalPremium', data_get($response, 'prices.interrisk.totalPremium',0) + $ac + $oc);
+        }
+
+       
         return  $response;
     }
     
