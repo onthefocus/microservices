@@ -10,6 +10,7 @@ use App\Http\Controllers\CalcController;
 use App\Http\Controllers\AIController;
 use App\Http\Controllers\ChatGPTController;
 use App\Http\Controllers\GeoController;
+use App\Http\Controllers\MicroFleetController;
 use App\Http\Controllers\YachtController;
 
 /*
@@ -42,6 +43,11 @@ Route::post('/companieshouse/convert', [CompaniesHouseController::class, 'fnolLi
 
 Route::post('/tax/surplus', [TaxController::class, 'surplus']);
 Route::post('/rates/builders', [CalcController::class, 'builders']);
+Route::post('/rates/fleet', [MicroFleetController::class, 'fleet']);
+
+Route::post('/export/aon', function (Request $request) {
+    return response()->json(['message' => 'success'], 200);
+});
 
 Route::post('/geo/search', [GeoController::class, 'search']);
 Route::post('/geo/distance', [GeoController::class, 'distance']);
