@@ -30,8 +30,8 @@ class MicroFleetController extends Controller
 
         $response = [
             'prices'=> [
-                'ergo' => ['multi' => $ergo],
-                'interrisk' => ['multi' => $interrisk]
+                'ergo' => $ergo,
+                'interrisk' =>  $interrisk
             ]
         ];
         return  $response;
