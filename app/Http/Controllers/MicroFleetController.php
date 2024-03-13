@@ -26,6 +26,7 @@ class MicroFleetController extends Controller
             data_set($response, 'prices.ergo.multi.'.$key.'.ac', $ac);
             $oc = 300;
             data_set($response, 'prices.ergo.multi.'.$key.'.oc', $oc);
+            data_set($response, 'prices.ergo.multi.'.$key.'.total', $oc+$ac);
             data_set($response, 'prices.ergo.totalPremium', data_get($response, 'prices.ergo.totalPremium',0) + $ac + $oc);
         }
 
@@ -34,6 +35,7 @@ class MicroFleetController extends Controller
             data_set($response, 'prices.interrisk.multi.'.$key.'.ac', $ac);
             $oc = 300;
             data_set($response, 'prices.interrisk.multi.'.$key.'.oc', $oc);
+            data_set($response, 'prices.interrisk.multi.'.$key.'.total', $ac+ $oc);
             data_set($response, 'prices.interrisk.totalPremium', data_get($response, 'prices.interrisk.totalPremium',0) + $ac + $oc);
         }
 
