@@ -13,13 +13,13 @@ class MicroFleetController extends Controller
         $data = $request->all();
         $ergo = data_get($data, 'prices.ergo',[]);
         $interrisk = data_get($data, 'prices.interrisk',[]);
-
+        $ergo['total'] = 0;
         foreach (data_get($ergo,'multi',[]) as $key => $value) {
             $ergo[$key]['ac'] = data_get($value,'value',0)*0.22;
             $ergo[$key]['oc'] = 300;
             $ergo['total'] += $ergo[$key]['ac'] + $ergo[$key]['oc'];
         }
-
+        $interrisk['total'] = 0;
         foreach (data_get($interrisk, 'multi',[]) as $key => $value) {
             $interrisk[$key]['ac'] = data_get($value,'value',0)*0.32;
             $interrisk[$key]['oc'] = 300;
