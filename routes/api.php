@@ -41,6 +41,7 @@ Route::post('/ai/initiate', [AIController::class, 'initiate']);
 Route::post('/ai/chat', [ChatGPTController::class, 'chat']);
 
 Route::post('/aimodel', [AIModelController::class, 'calculate']);
+Route::post('/aiclaims', [AIModelController::class, 'claims']);
 
 Route::post('/companieshouse/convert', [CompaniesHouseController::class, 'fnolLink']);
 
