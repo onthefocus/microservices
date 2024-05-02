@@ -51,7 +51,7 @@ class AIModelController extends Controller
             'teritory' => $teritory
         ];
         
-        $makeRiskTable = [
+        $makeRiskCoeficient = [
             'Toyota' => 2.4,
             'BMW' => 5.6,
             'Mercedes' => 4.3,
@@ -93,13 +93,13 @@ class AIModelController extends Controller
 
         ];
         
-        $risk = data_get($makeRiskTable, $make, 3) + data_get($yearRiskCoeficient, $year, 2.5);
+        $risk = data_get($makeRiskCoeficient, $make, 0.5) + data_get($yearRiskCoeficient, $year, 0.5);
 
         $extra = "";
         switch ($risk)
         {
             case $risk > 7:
-                $extra = "This quote case is considered too risky (>7%) for insurance coverage, it's recommended to deny this quote";
+                $extra = "This quote case is considered too risky (>7%) for insurance coverage, it's recommended to deny this quote coverage.";
                 break;
             case $risk > 5:
                 $extra = "This quote case should be suppervised (>5%) by underwriter and needs manual his approval.";
